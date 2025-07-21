@@ -3,7 +3,7 @@ import {
   BASE_ACCEL, BASE_MAXSPD, SCALE_A, SCALE_LERP,
   PLANE_W, PIXEL_SIZE
 } from './constants.js';
-import { GameState }          from './state.js';
+import { GameState } from './state.js';
 import {
   createPlaneGraphic, drawPlane,
   handleInput, integrateMotion, constrainPlane
@@ -12,10 +12,18 @@ import {
   initChunks, generateChunks,
   scrollChunks, renderGround
 } from './terrain.js';
+import {
+  initClouds, updateClouds,
+  renderClouds, resizeClouds
+} from './clouds.js';
 import { keyPressed, windowResized } from './controls.js';
 
-window.keyPressed    = keyPressed;
-window.windowResized = windowResized;
+window.keyPressed = keyPressed;
+window.windowResized = function(){
+  resizeCanvas(windowWidth, windowHeight);
+  resizeClouds();
+  windowResized();
+};
 
 function usableTravelWidth(scale){
   return width - (PLANE_W * PIXEL_SIZE) * scale;
@@ -47,6 +55,7 @@ window.setup = function(){
 
   createPlaneGraphic();
   initChunks();
+  initClouds();
 
   GameState.planeX = width  / 2;
   GameState.planeY = height / 2;
@@ -63,4 +72,8 @@ window.draw = function(){
   integrateMotion();
   constrainPlane();
   drawPlane();
+
+  updateClouds();
+  renderClouds();
+
 };

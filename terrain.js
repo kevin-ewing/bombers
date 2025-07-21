@@ -123,7 +123,6 @@ function generateRows(g,y0,start,count){
         col.b += (stableHash(tx,ty,start)%5);
       }
 
-      /* ultra grain + random pixel jitter */
       const nUltra = noise(wx*ULTRA_GRAIN_S, wy*ULTRA_GRAIN_S);
       const rnd = stableHash(tx,ty,start) % 1000 / 1000;
       col.h += (nUltra-0.5)*6 + (rnd-0.5)*2;

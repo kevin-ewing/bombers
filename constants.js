@@ -38,10 +38,23 @@ export const RIVER_THRESH = 0.035;
 export const WATER_H      = 200;
 export const WATER_S      = 55;
 export const WATER_B      = 85;
-export const BEACH_SIZE   = 0.0015;  // additional band around river
+export const BEACH_SIZE   = 0.0015;
 export const BEACH_H      = 48;
 export const BEACH_S      = 25;
 export const BEACH_B      = 92;
 
 /* extra fine grain */
 export const ULTRA_GRAIN_S = 0.25;
+
+/* clouds */
+export const CLOUD_TILE_SIZE    = 6;
+export const CLOUD_CHUNK_COUNT  = 3;
+export const CLOUD_ROWS_PER_FRAME = 2;
+export const CLOUD_SCROLL_MULT  = 2.2;      // faster downward motion
+export const CLOUD_MACRO_S      = 0.00025;
+export const CLOUD_DETAIL_S     = 0.0035;
+export const CLOUD_WISP_S       = 0.03;
+export const CLOUD_ALPHA_MIN    = 25;
+export const CLOUD_ALPHA_MAX    = 85;
+export const CLOUD_COVER_S       = 0.002;  // very coarse cloud-cover field
+export const CLOUD_COVER_THRESH  = 0.02;     // higher → fewer clouds
