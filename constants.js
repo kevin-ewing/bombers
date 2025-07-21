@@ -13,17 +13,17 @@ export const SCALE_A      = 0.15;
 export const SCALE_B      = 0.5;
 export const SCALE_LERP   = 0.12;
 
-export const TILE_SIZE    = 6;
+export const TILE_SIZE    = 3;
 export const SCROLL_BASE  = 6;
+
 export const BASE_S       = 0.0015;
 export const FOREST_S     = 0.0024;
 export const PATCH_S      = 0.0013;
-export const DETAIL_S     = 0.007;
 export const GRAIN_S      = 0.035;
 export const GRAIN_S2     = 0.085;
 
-export const CHUNK_COUNT      = 4;
-export const ROWS_PER_FRAME   = 4;
+export const CHUNK_COUNT    = 4;
+export const ROWS_PER_FRAME = 4;
 
 export const FARMS = [
   {h1:45,h2:55,s1:35,s2:65,b1:70,b2:90}, {h1:35,h2:45,s1:15,s2:35,b1:65,b2:85},
@@ -31,3 +31,17 @@ export const FARMS = [
   {h1:50,h2:60,s1:30,s2:55,b1:60,b2:80}, {h1:80,h2:100,s1:35,s2:65,b1:50,b2:70},
   {h1:30,h2:38,s1:40,s2:60,b1:45,b2:65}
 ];
+
+/* river + beach */
+export const RIVER_S      = 0.00008;
+export const RIVER_THRESH = 0.035;
+export const WATER_H      = 200;
+export const WATER_S      = 55;
+export const WATER_B      = 85;
+export const BEACH_SIZE   = 0.0015;  // additional band around river
+export const BEACH_H      = 48;
+export const BEACH_S      = 25;
+export const BEACH_B      = 92;
+
+/* extra fine grain */
+export const ULTRA_GRAIN_S = 0.25;
