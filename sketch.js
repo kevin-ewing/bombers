@@ -16,37 +16,43 @@ import {
   initClouds, updateClouds,
   renderClouds, resizeClouds
 } from './clouds.js';
-import { keyPressed, windowResized } from './controls.js';
+import { keyPressed, windowResized as controlsWindowResized } from './controls.js';
+import {
+  createBomberGraphic,
+  updateBomberPosition,
+  drawBomber
+} from './bomber.js';
 
 window.keyPressed = keyPressed;
-window.windowResized = function(){
+window.windowResized = function () {
   resizeCanvas(windowWidth, windowHeight);
   resizeClouds();
-  windowResized();
+  controlsWindowResized();
 };
 
-function usableTravelWidth(scale){
+function usableTravelWidth(scale) {
   return width - (PLANE_W * PIXEL_SIZE) * scale;
 }
 
-function updateScaleAndSpeeds(){
+function updateScaleAndSpeeds() {
   GameState.sceneScale = lerp(GameState.sceneScale, GameState.targetScale, SCALE_LERP);
-  if(abs(GameState.sceneScale - GameState.targetScale) < 0.0001)
+  if (abs(GameState.sceneScale - GameState.targetScale) < 0.0001)
     GameState.sceneScale = GameState.targetScale;
 
-  const speedFactor = usableTravelWidth(GameState.sceneScale) /
-                      usableTravelWidth(SCALE_A);
+  const speedFactor =
+    usableTravelWidth(GameState.sceneScale) /
+    usableTravelWidth(SCALE_A);
 
-  GameState.accel  = lerp(GameState.accel , BASE_ACCEL  * speedFactor, SCALE_LERP);
+  GameState.accel = lerp(GameState.accel, BASE_ACCEL * speedFactor, SCALE_LERP);
   GameState.maxSpd = lerp(GameState.maxSpd, BASE_MAXSPD * speedFactor, SCALE_LERP);
 }
 
-window.setup = function(){
+window.setup = function () {
   createCanvas(windowWidth, windowHeight);
   pixelDensity(2);
-  colorMode(HSB,360,100,100);
+  colorMode(HSB, 360, 100, 100);
   noSmooth();
-  noiseDetail(6,0.5);
+  noiseDetail(6, 0.5);
 
   GameState.sceneScale  = SCALE_A;
   GameState.targetScale = SCALE_A;
@@ -54,19 +60,23 @@ window.setup = function(){
   GameState.maxSpd      = BASE_MAXSPD;
 
   createPlaneGraphic();
+  createBomberGraphic(1); // scale factor
   initChunks();
   initClouds();
 
-  GameState.planeX = width  / 2;
+  GameState.planeX = width / 2;
   GameState.planeY = height / 2;
 };
 
-window.draw = function(){
+window.draw = function () {
   updateScaleAndSpeeds();
 
   generateChunks();
   scrollChunks();
   renderGround();
+
+  updateBomberPosition();
+  drawBomber();
 
   handleInput();
   integrateMotion();
@@ -75,5 +85,4 @@ window.draw = function(){
 
   updateClouds();
   renderClouds();
-
 };

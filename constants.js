@@ -4,6 +4,9 @@ export const PIXEL_SIZE   = 2;
 export const PLANE_W      = 100;
 export const PLANE_H      = 120;
 
+export const BOMBER_W     = 220
+export const BOMBER_H     = 240
+
 export const BASE_ACCEL   = 0.4;
 export const BASE_MAXSPD  = 12;
 export const FRICTION     = 0.92;
@@ -50,7 +53,7 @@ export const ULTRA_GRAIN_S = 0.25;
 export const CLOUD_TILE_SIZE    = 6;
 export const CLOUD_CHUNK_COUNT  = 3;
 export const CLOUD_ROWS_PER_FRAME = 2;
-export const CLOUD_SCROLL_MULT  = 2.2;      // faster downward motion
+export const CLOUD_SCROLL_MULT  = 2.4;      // faster downward motion
 export const CLOUD_MACRO_S      = 0.00025;
 export const CLOUD_DETAIL_S     = 0.0035;
 export const CLOUD_WISP_S       = 0.03;
