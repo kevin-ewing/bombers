@@ -61,3 +61,6 @@ export const CLOUD_ALPHA_MIN    = 25;
 export const CLOUD_ALPHA_MAX    = 85;
 export const CLOUD_COVER_S       = 0.002;  // very coarse cloud-cover field
 export const CLOUD_COVER_THRESH  = 0.02;     // higher → fewer clouds
+
+export const RUMBLE_AMP = 2
+export const RUMBLE_FREQ = 0.1
